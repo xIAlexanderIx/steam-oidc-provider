@@ -2,12 +2,19 @@ name: CI
 
 on:
   push:
-    branches: [main, 'feature/**', 'bugfix/**', 'hotfix/**', 'refactor/**']
+    branches:
+      - main
+      - 'feature/**'
+      - 'bugfix/**'
+      - 'hotfix/**'
+      - 'refactor/**'
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   test:
+    name: Bun CI
     runs-on: ubuntu-latest
 
     steps:
