@@ -87,7 +87,7 @@ describe('/callback', () => {
         it('should reject requests with unauthorized redirect_uri in state', async () => {
             const authState: AuthState = {
                 clientId: config.clientId,
-                redirectUri: 'https://evil.com/callback',
+                redirectUri: 'https://example.com/callback',
                 nonce: 'test-nonce',
             };
             const signedCookie = signData(JSON.stringify(authState), config.jwtSecret);
