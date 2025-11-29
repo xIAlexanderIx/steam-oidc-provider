@@ -47,7 +47,7 @@ describe('/authorize', () => {
 
     it('returns error for invalid redirect_uri', async () => {
         const res = await app.request(
-            '/authorize?client_id=test-client-id&redirect_uri=https://evil.com/callback&response_type=code',
+            '/authorize?client_id=test-client-id&redirect_uri=https://example.com/callback&response_type=code',
         );
 
         expect(res.status).toBe(400);
