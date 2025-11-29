@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+    steam-oidc:
+        build: .
+        ports:
+            - '3000:3000'
+        environment:
+            - STEAM_API_KEY=${STEAM_API_KEY}
+            - CLIENT_ID=${CLIENT_ID:-steam-oidc}
+            - CLIENT_SECRET=${CLIENT_SECRET}
+            - ISSUER_URL=${ISSUER_URL:-http://localhost:3000}
+            - REDIRECT_URIS=${REDIRECT_URIS}
+            - JWT_SECRET=${JWT_SECRET}
+            - REDIS_URL=redis://redis:6379
+            - ACCESS_TOKEN_TTL=${ACCESS_TOKEN_TTL:-3600}
+            - AUTH_CODE_TTL=${AUTH_CODE_TTL:-300}
+            - PORT=3000
+            - BASE_PATH=${BASE_PATH:-/}
+            - TRUSTED_PROXY=${TRUSTED_PROXY:-false}
+        depends_on:
+            - redis
+        restart: unless-stopped
+
+    redis:
+        image: redis:7.2-alpine
+        volumes:
+            - redis_data:/data
+        command: redis-server --appendonly yes
+        restart: unless-stopped
+
+volumes:
+    redis_data:

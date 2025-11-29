@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Git
+.git/
+.gitignore
+
+# Environment
+.env
+.env.*
+
+# Documentation
+*.md
+!README.md
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Keys
+*.pem
+*.key
+
+# Tests
+tests/
+coverage/
+
+# OS
+.DS_Store
+Thumbs.db
